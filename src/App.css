@@ -1,5 +1,9 @@
-main {
-  text-align: center;
-  vertical-align: center;
-  line-height: 100vh
+*{
+  padding:0;
+  margin:0;
+}
+
+a{
+  text-decoration:none !important;
+  color:white !important;
 }
