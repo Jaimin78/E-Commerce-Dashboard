@@ -15,10 +15,7 @@ const Navigation = () => {
              <Link to="/profile">Profile</Link>      
              <Link to="/add">Product Add</Link>           
              <Link to="/update">Product Update</Link> 
-             <div className="btn-group">    
-              <Link to="/signup" className="py-2 px-1"><Button variant="success">SignUp</Button></Link>       
-              <Link to="/logout" className="py-2 px-1"><Button variant="danger">Logout</Button></Link>
-             </div>
+             <Link to="/logout" className="py-2"><Button variant="danger">Logout</Button></Link>
            </Nav>
          </Navbar.Collapse>
        </Container>

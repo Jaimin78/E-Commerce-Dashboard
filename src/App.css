@@ -8,7 +8,14 @@ a{
   color:white !important;
 }
 
+#root{
+  height:100%;
+}
+
 .footer{
+  position:fixed;
+  bottom:0;
+  width:100%;
   background-color:#141414;
   text-align:center;
   padding:5px;
