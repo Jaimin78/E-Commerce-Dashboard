@@ -7,3 +7,10 @@ a{
   text-decoration:none !important;
   color:white !important;
 }
+
+.footer{
+  background-color:#141414;
+  text-align:center;
+  padding:5px;
+  color:white;
+}
