@@ -1,13 +1,28 @@
 import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
+import {useNavigate} from 'react-router-dom';
 
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState(''); 
+  const navigate = useNavigate();
+  
+  const getData = async () => {
+    console.warn(name, email, password);
+    const result = await fetch('https://e-commerce-dashboard-backend.jaiminsuthar.repl.co/api/user/register',{
+      method:'post',
+      body: JSON.stringify({name, email, password}), 
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    let response = await result.json();
+    console.log(response)
 
-  const getData = () => {
-    console.warn(name, email, password)
+    if(response){
+      navigate('/');
+    }
   }
   return (
     <>
@@ -31,7 +46,7 @@ const Register = () => {
               onChange={(e)=>setEmail(e.target.value)}
               />
           </Form.Group>
-
+          
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control 
