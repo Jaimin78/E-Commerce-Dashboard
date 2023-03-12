@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom';
 
@@ -8,8 +8,14 @@ const Register = () => {
   const [password, setPassword] = useState(''); 
   const navigate = useNavigate();
   
+  useEffect(()=> {
+    const auth = localStorage.getItem('user');
+    if(auth){
+        navigate('/')
+      } 
+  })
+
   const getData = async () => {
-    console.warn(name, email, password);
     const result = await fetch('https://e-commerce-dashboard-backend.jaiminsuthar.repl.co/api/user/register',{
       method:'post',
       body: JSON.stringify({name, email, password}), 
@@ -18,8 +24,8 @@ const Register = () => {
       }
     })
     let response = await result.json();
-    console.log(response)
-
+    localStorage.setItem('user', JSON.stringify(response));
+""
     if(response){
       navigate('/');
     }

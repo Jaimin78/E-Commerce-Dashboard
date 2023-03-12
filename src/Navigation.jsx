@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 
-const Navigation = () => {
+const Navigation = () => { 
+  const auth = localStorage.getItem('user');
   return(
     <>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -16,8 +17,13 @@ const Navigation = () => {
              <Link to="/add">Product Add</Link>           
              <Link to="/update">Product Update</Link> 
              <div className="btn-group">    
-              <Link to="/signup" className="py-2 px-1"><Button variant="success">SignUp</Button></Link>       
-              <Link to="/logout" className="py-2 px-1"><Button variant="danger">Logout</Button></Link>
+               { auth ? null:
+                 <Link to="/login" className="py-2 px-1"><Button variant="success">Login</Button></Link>
+               }
+               { auth ?
+                <Link to="/logout" className="py-2 px-1"><Button variant="danger">Logout</Button></Link>
+                 :<Link to="/signup" className="py-2 px-1"><Button variant="primary">SignUp</Button></Link>
+               }
              </div>
            </Nav>
          </Navbar.Collapse>
