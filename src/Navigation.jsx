@@ -1,9 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 
 const Navigation = () => { 
   const auth = localStorage.getItem('user');
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.clear();
+    navigate('/signup')  
+  }
+  
   return(
     <>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -21,7 +27,7 @@ const Navigation = () => {
                  <Link to="/login" className="py-2 px-1"><Button variant="success">Login</Button></Link>
                }
                { auth ?
-                <Link to="/logout" className="py-2 px-1"><Button variant="danger">Logout</Button></Link>
+                <Link to="/signup" className="py-2 px-1"><Button variant="danger" onClick={logout}>Logout</Button></Link>
                  :<Link to="/signup" className="py-2 px-1"><Button variant="primary">SignUp</Button></Link>
                }
              </div>
