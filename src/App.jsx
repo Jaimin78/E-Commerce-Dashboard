@@ -3,6 +3,7 @@ import Navigation from './Navigation';
 import Footer from './Footer';
 import Register from './Register';
 import PrivateComponent from './PrivateComponent';
+import Login from './Login';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
            <Route path="/update" element= {<h1>Product update</h1>} />       
           </Route>
   
-          <Route path="/login" element= {<h1>Login</h1>} />
+          <Route path="/login" element= {<Login />} />
           <Route path="/signup" element= {<Register />} />
         </Routes>
       </BrowserRouter>
