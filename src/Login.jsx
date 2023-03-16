@@ -1,12 +1,38 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const login = () => {
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    const auth = localStorage.getItem('user');
+    if (auth) {
+      navigate('/')
+    }
+  })
+  
+  const login = async () => {
     console.log(email, password);
+    let result = await fetch('https://e-commerce-dashboard-backend.jaiminsuthar.repl.co/api/user/login',
+  {
+    method:'post',
+    body: JSON.stringify({email, password}),
+    headers: {
+      'Content-Type':'application/json'
+    }
+  })
+    result = await result.json()
+    if(!result.name){    
+      console.log("Not found")
+      alert("User not found");
+    }else{
+      localStorage.setItem('user', JSON.stringify(result));
+      navigate('/');
+    }
+  
   }
   
   return(

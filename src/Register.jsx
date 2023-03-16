@@ -25,7 +25,6 @@ const Register = () => {
     })
     let response = await result.json();
     localStorage.setItem('user', JSON.stringify(response));
-    ""
     if (response) {
       navigate('/');
     }

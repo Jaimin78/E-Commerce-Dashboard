@@ -7,7 +7,7 @@ const Navigation = () => {
   const navigate = useNavigate();
   const logout = () => {
     localStorage.clear();
-    navigate('/signup')  
+    navigate('/login')  
   }
   
   return(
@@ -22,13 +22,14 @@ const Navigation = () => {
              <Link to="/profile">Profile</Link>      
              <Link to="/add">Product Add</Link>           
              <Link to="/update">Product Update</Link> 
-             <div className="btn-group">    
-               { auth ? null:
-                 <Link to="/login" className="py-2 px-1"><Button variant="success">Login</Button></Link>
-               }
+             <div className="btn-group">   
                { auth ?
                 <Link to="/signup" className="py-2 px-1"><Button variant="danger" onClick={logout}>Logout</Button></Link>
-                 :<Link to="/signup" className="py-2 px-1"><Button variant="primary">SignUp</Button></Link>
+                 :
+                 <>        
+                 <Link to="/login" className="py-2 px-1"><Button variant="success">Login</Button></Link>
+                 <Link to="/signup" className="py-2 px-1"><Button variant="primary">SignUp</Button></Link>
+                 </>
                }
              </div>
            </Nav>
