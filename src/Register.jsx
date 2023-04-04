@@ -32,6 +32,7 @@ const Register = () => {
   return (
     <>
       <Container className="my-4">
+        <h1>Register</h1>
         <Form.Group className="mb-3" controlId="formBasicText">
           <Form.Label>Name</Form.Label>
           <Form.Control

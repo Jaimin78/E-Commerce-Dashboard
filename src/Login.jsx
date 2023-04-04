@@ -25,8 +25,7 @@ const Login = () => {
     }
   })
     result = await result.json()
-    if(!result.name){    
-      console.log("Not found")
+    if(result.error){    
       alert("User not found");
     }else{
       localStorage.setItem('user', JSON.stringify(result));
@@ -38,6 +37,7 @@ const Login = () => {
   return(
     <>
      <Container className="my-4">
+          <h1>Login</h1>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email Address</Form.Label>
             <Form.Control 
