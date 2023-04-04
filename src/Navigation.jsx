@@ -17,25 +17,31 @@ const Navigation = () => {
           <Navbar.Brand>E - Commerce Dashboard</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mt-3">
-              <Nav.Link as={Link} to="/">Home</Nav.Link>
-              <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-              <Nav.Link as={Link} to="/add">Product Add</Nav.Link>
-              <Nav.Link as={Link} to="/update">Product Update</Nav.Link>
-              <div className="btn-group">
-                {auth ?
-                  <Nav.Link as={Link} to="/signup" className="py-2 px-1"><Button variant="danger" onClick={logout}>Logout</Button></Nav.Link>
-                  :
-                  <>
-                    <Nav.Link as={Link} to="/login" className="py-2 px-1"><Button variant="success">Login</Button></Nav.Link>
-                    <Nav.Link as={Link} to="/signup" className="py-2 px-1"><Button variant="primary">SignUp</Button></Nav.Link>
-                  </>
-                }
-              </div>
-            </Nav>
+            {auth ?
+              <Nav className="mt-2">
+                <Nav.Link as={Link} to="/">Home</Nav.Link>
+                <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
+                <Nav.Link as={Link} to="/add">Product Add</Nav.Link>
+                <Nav.Link as={Link} to="/update">Product Update</Nav.Link>
+              </Nav> :
+
+              <Nav className="mt-2">
+                <div className="btn-group">
+                  <Nav.Link as={Link} to="/login" className="py-2 px-1"><Button variant="success">Login</Button></Nav.Link>
+                  <Nav.Link as={Link} to="/signup" className="py-2 px-1"><Button variant="primary">SignUp</Button></Nav.Link>
+                </div>
+              </Nav>
+            }
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      {auth ?
+        <div className="logout px-2">
+            <span className="py-1">{JSON.parse(auth).name}</span>
+            <Nav.Link as={Link} to="/signup" className="px-1"><Button variant="danger" onClick={logout}>Logout</Button></Nav.Link>
+        </div>
+        : null
+      }
     </>
   )
 }
