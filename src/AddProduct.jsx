@@ -7,8 +7,19 @@ const AddProduct = () => {
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
 
-  const addProduct = () => {
-    console.log(name, price, brand, category)
+  const addProduct = async () => {
+    //console.log(name, price, brand, category);
+    let userId = JSON.parse(localStorage.getItem('user'))._id;
+    console.log(userId)
+    let result = await fetch('https://e-commerce-dashboard-backend.jaiminsuthar.repl.co/api/product/add',{
+       method:'post',
+       body: JSON.stringify({name, price, brand, category, userId }),
+       headers: {
+         'Content-Type':'application/json'
+       }
+    })
+    result = await result.json();
+    console.log(result)
   }
 
   return (
