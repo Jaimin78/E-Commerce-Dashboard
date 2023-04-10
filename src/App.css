@@ -12,6 +12,11 @@ a{
   height:100%;
 }
 
+main {
+  text-align: center;
+  vertical-align: center;
+}
+
 .footer{
   position:fixed;
   bottom:0;
