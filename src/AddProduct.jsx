@@ -5,7 +5,8 @@ const AddProduct = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [brand, setBrand] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(""); 
+  const [imageUrl, setImage] = useState("");
 
   const addProduct = async () => {
     //console.log(name, price, brand, category);
@@ -13,7 +14,7 @@ const AddProduct = () => {
     console.log(userId)
     let result = await fetch('https://e-commerce-dashboard-backend.jaiminsuthar.repl.co/api/product/add',{
        method:'post',
-       body: JSON.stringify({name, price, brand, category, userId }),
+       body: JSON.stringify({name, price, brand, category, userId, imageUrl}),
        headers: {
          'Content-Type':'application/json'
        }
@@ -64,6 +65,17 @@ const AddProduct = () => {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           />
+        </Form.Group>
+        
+        <Form.Group className="mb-3" controlId="formBasicText">
+          <Form.Label>Product Image</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter Category"
+            value={imageUrl}
+            onChange={(e) => setImage(e.target.value)}
+          />
+          <center><img style={{width:200}} src={imageUrl}/></center>
         </Form.Group>
 
         <Button variant="primary" type="submit"

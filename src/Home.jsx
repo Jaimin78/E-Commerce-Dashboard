@@ -13,6 +13,15 @@ const Home = () => {
     data = await data.json();
     setProductList(data);
   }
+
+  const productDelete = async (id) => {
+     let remove = await fetch(`https://e-commerce-dashboard-backend.jaiminsuthar.repl.co/api/product/delete/${id}`,{
+       method:'delete'
+     })
+     if(remove){
+       getProduct()
+     }
+  }
   
   return(
     <>
@@ -41,7 +50,7 @@ const Home = () => {
           <td>{item.brand}</td>
           <td>{item.category}</td>
           <td><Button className="btn btn-success">Update</Button></td>
-          <td><Button className="btn btn-danger">Delete</Button></td>
+          <td><Button className="btn btn-danger" onClick={() => productDelete(item._id)}>Delete</Button></td>
         </tr>)
         }
       </tbody>
