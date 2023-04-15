@@ -22,7 +22,6 @@ const Navigation = () => {
                 <Nav.Link as={Link} to="/">Home</Nav.Link>
                 <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
                 <Nav.Link as={Link} to="/add">Product Add</Nav.Link>
-                <Nav.Link as={Link} to="/update">Product Update</Nav.Link>
               </Nav> :
 
               <Nav className="mt-2">
