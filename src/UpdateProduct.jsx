@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const UpdateProduct = () => {
   const [name, setName] = useState("");
@@ -9,9 +9,10 @@ const UpdateProduct = () => {
   const [category, setCategory] = useState(""); 
   const [imageUrl, setImage] = useState("");
   
-  const params = useParams()
+  const navigate = useNavigate();
+  const params = useParams();
   useEffect(()=>{
-    console.log(params)
+    //console.log(params)
     getProduct()
   },[])
 
@@ -26,7 +27,16 @@ const UpdateProduct = () => {
   }
   
   const updateProduct = async () => {
-    console.log(name, price, brand, category, imageUrl);
+    //console.log(name, price, brand, category, imageUrl);
+    let result = await fetch(`https://e-commerce-dashboard-backend.jaiminsuthar.repl.co/api/product/update/${params.id}`,{
+      method:'put',
+      body: JSON.stringify({name, price, brand, category, imageUrl}),
+      headers: {
+        'Content-type':'application/json'
+      }
+    })
+    result = await result.json();
+    navigate('/')
   }
 
   return (
