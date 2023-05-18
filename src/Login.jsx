@@ -28,7 +28,9 @@ const Login = () => {
     if(result.error){    
       alert("User not found");
     }else{
-      localStorage.setItem('user', JSON.stringify(result));
+      localStorage.setItem('user', JSON.stringify(result.find));
+      localStorage.setItem('token', JSON.stringify(result.auth));
+
       navigate('/');
     }
   

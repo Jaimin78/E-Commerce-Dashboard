@@ -4,6 +4,7 @@ import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 
 const Navigation = () => {
   const auth = localStorage.getItem('user');
+  //console.log(auth.find.name)
   const navigate = useNavigate();
   const logout = () => {
     localStorage.clear();

@@ -10,7 +10,11 @@ const Home = () => {
   }, [])
 
   const getProduct = async () => {
-    let data = await fetch('https://e-commerce-dashboard-backend.jaiminsuthar.repl.co/api/product');
+    let data = await fetch('https://e-commerce-dashboard-backend.jaiminsuthar.repl.co/api/product',{
+      headers:{
+        authorization: JSON.parse(localStorage.getItem('token'))
+      }
+    });
     data = await data.json();
     setProductList(data);
   }

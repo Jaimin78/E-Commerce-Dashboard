@@ -24,7 +24,8 @@ const Register = () => {
       }
     })
     let response = await result.json();
-    localStorage.setItem('user', JSON.stringify(response));
+    localStorage.setItem('user', JSON.stringify(response.save));
+    localStorage.setItem('token', JSON.stringify(response.auth));
     if (response) {
       navigate('/');
     }
