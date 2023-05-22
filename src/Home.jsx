@@ -10,8 +10,8 @@ const Home = () => {
   }, [])
 
   const getProduct = async () => {
-    let data = await fetch('https://e-commerce-dashboard-backend.jaiminsuthar.repl.co/api/product',{
-      headers:{
+    let data = await fetch('https://e-commerce-dashboard-backend.jaiminsuthar.repl.co/api/product', {
+      headers: {
         authorization: JSON.parse(localStorage.getItem('token'))
       }
     });
@@ -21,7 +21,10 @@ const Home = () => {
 
   const productDelete = async (id) => {
     let remove = await fetch(`https://e-commerce-dashboard-backend.jaiminsuthar.repl.co/api/product/delete/${id}`, {
-      method: 'delete'
+      method: 'delete',
+      headers: {
+        authorization: JSON.parse(localStorage.getItem('token'))
+      }
     })
     if (remove) {
       getProduct()
@@ -31,7 +34,11 @@ const Home = () => {
   const searchProduct = async (event) => {
     let key = event.target.value;
     if (key) {
-      let search = await fetch(`https://e-commerce-dashboard-backend.jaiminsuthar.repl.co/api/product/search/${key}`);
+      let search = await fetch(`https://e-commerce-dashboard-backend.jaiminsuthar.repl.co/api/product/search/${key}`, {
+        headers: {
+          authorization: JSON.parse(localStorage.getItem('token'))
+        }
+      });
       search = await search.json();
       setProductList(search)
     } else {

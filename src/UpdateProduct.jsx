@@ -17,7 +17,11 @@ const UpdateProduct = () => {
   },[])
 
   const getProduct = async () => {
-    let result= await fetch(`https://e-commerce-dashboard-backend.jaiminsuthar.repl.co/api/product/get/${params.id}`)
+    let result= await fetch(`https://e-commerce-dashboard-backend.jaiminsuthar.repl.co/api/product/get/${params.id}`,   {
+      headers:{
+        authorization: JSON.parse(localStorage.getItem('token'))
+      }
+    });
     result = await result.json();
     setName(result.name);
     setPrice(result.price);
@@ -32,7 +36,8 @@ const UpdateProduct = () => {
       method:'put',
       body: JSON.stringify({name, price, brand, category, imageUrl}),
       headers: {
-        'Content-type':'application/json'
+        'Content-type':'application/json',
+        authorization: JSON.parse(localStorage.getItem('token'))
       }
     })
     result = await result.json();
